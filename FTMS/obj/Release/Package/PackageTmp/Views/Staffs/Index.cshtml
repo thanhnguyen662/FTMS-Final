@@ -1,0 +1,31 @@
+﻿@model IEnumerable<FTMS.ViewModels.UserRoleViewModel>
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table table-hover">
+	<tr>
+		<th>UserName</th>
+		<th>Email</th>
+		<th>Role</th>
+		<th>Delete</th>
+		<th>Edit</th>
+		<th>Change Password</th>
+	</tr>
+	@foreach (var users in Model)
+	{
+		<tr>
+			@if ((users.Role.Contains("Admin") || users.Role.Contains("Trainer") || users.Role.Contains("Training Staff")) == false)
+			{
+				<td>@users.Username</td>
+				<td>@users.Email</td>
+				<td>@users.Role</td>
+				<td>@Html.ActionLink("Delete this user", "Delete", new { id = users.UserId })</td>
+				<td>@Html.ActionLink("Edit this user", "Edit", new { id = users.UserId })</td>
+				<td>@Html.ActionLink("Change Password", "Reset", new { id = users.UserId })</td>
+			}
+		</tr>
+	}
+</table>

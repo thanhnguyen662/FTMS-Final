@@ -1,0 +1,28 @@
+﻿@model FTMS.ViewModels.TraineeCourseViewModel
+
+@{
+	ViewBag.Title = "Create";
+}
+
+<h2>Assign Trainee to Course</h2>
+
+@using (Html.BeginForm("Create", "ManageTrainees", FormMethod.Post))
+{
+	<div class="form-group">
+		@Html.LabelFor(m => m.ManageTrainee.TraineeId)
+		@Html.DropDownListFor(m => m.ManageTrainee.TraineeId, new SelectList(Model.Trainees, "Id", "Email"), "Select Trainee", new { @class = "form-control" }
+		)
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(m => m.ManageTrainee.Course.Name)
+		@Html.DropDownListFor(m => m.ManageTrainee.CourseId
+		  , new SelectList(Model.Courses, "Id", "Name"),
+		  "Select Course",
+		  new { @class = "form-control" }
+		)
+	</div>
+
+
+	<button type="submit" class="btn btn-primary">Assign</button>
+}

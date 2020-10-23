@@ -1,0 +1,38 @@
+﻿@model IEnumerable<FTMS.Models.Topic>
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Topic</h2>
+
+@Html.ActionLink("Create a new topic", "Create")
+@using (Html.BeginForm("Index", "Topics", FormMethod.Get))
+{
+	<p>
+		Find by topic name: @Html.TextBox("SearchString")
+		<input type="submit" value="Search" />
+	</p>
+}
+
+<table class="table table-hover">
+	<tr>
+		<th>Id</th>
+		<th>Topic Name</th>
+		<th>Topic Description</th>
+		<th>Course Name</th>
+		<th>Delete</th>
+		<th>Edit</th>
+	</tr>
+	@foreach (var topic in Model)
+	{
+		<tr>
+			<td>@topic.Id</td>
+			<td>@topic.Name</td>
+			<td>@topic.Description</td>
+			<td>@topic.Course.Name</td>
+			<td>@Html.ActionLink("Delete", "Delete", new { id = topic.Id })</td>
+			<td>@Html.ActionLink("Edit", "Edit", new { id = topic.Id })</td>
+		</tr>
+	}
+</table>
+

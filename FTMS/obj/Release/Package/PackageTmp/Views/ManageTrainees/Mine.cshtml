@@ -1,0 +1,21 @@
+﻿@model IEnumerable<FTMS.Models.ManageTrainee>
+@{
+	ViewBag.Title = "Mine";
+}
+
+
+<h2>Mine</h2>
+
+<table class="table table-hover">
+	<tr>
+		<th>Course Name</th>
+		<th>Trainee Email</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<th>@item.Course.Name</th>
+			<th>@item.Trainee.Email</th>
+		</tr>
+	}
+</table>

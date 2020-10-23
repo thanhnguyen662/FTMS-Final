@@ -1,0 +1,53 @@
+﻿@model IEnumerable<FTMS.Models.TrainerInfo>
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Trainer Info</h2>
+@if (Request.IsAuthenticated && User.IsInRole("Training Staff"))
+{
+	@Html.ActionLink("Create a new Trainer Info", "Create")
+}
+@using (Html.BeginForm("Index", "TrainerInfos", FormMethod.Get))
+{
+	<p>
+		Find by trainer username: @Html.TextBox("SearchString")
+		<input type="submit" value="Search" />
+	</p>
+}
+
+<table class="table table-hover">
+	<tr>
+		<th>Id</th>
+		<th>Username</th>
+		<th>Full Name</th>
+		<th>Email</th>
+		<th>Phone</th>
+		<th>Working Place</th>
+		@if (Request.IsAuthenticated && User.IsInRole("Training Staff"))
+			{
+			<th>Delete</th>
+			}
+		<th>Edit</th>
+
+	</tr>
+	@foreach (var trainerInfo in Model)
+	{
+		<tr>
+			<td>@trainerInfo.TrainerInfoId</td>
+			<td>@trainerInfo.Trainer.UserName</td>
+			<td>@trainerInfo.Full_Name</td>
+			<td>@trainerInfo.Email</td>
+			<td>@trainerInfo.Phone</td>
+			<td>@trainerInfo.Working_Place</td>
+			@if (Request.IsAuthenticated && User.IsInRole("Training Staff"))
+			{
+			<td>@Html.ActionLink("Delete", "Delete", new { trainerInfoId = trainerInfo.TrainerInfoId }, null)</td>
+			}
+
+
+			<td>@Html.ActionLink("Edit", "Edit", new { trainerInfoId = trainerInfo.TrainerInfoId }, null)</td>
+			
+		</tr>
+	}
+</table>

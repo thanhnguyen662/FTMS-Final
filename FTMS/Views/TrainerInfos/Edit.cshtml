@@ -1,0 +1,41 @@
+﻿@model FTMS.Models.TrainerInfo
+
+@{
+	ViewBag.Title = "Edit";
+}
+
+<h2>Edit Trainer Info</h2>
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+@using (Html.BeginForm("Edit", "TrainerInfos", FormMethod.Post))
+{
+	@Html.AntiForgeryToken()
+	@Html.HiddenFor(p => p.TrainerInfoId)
+	<div class="form-group">
+		@Html.LabelFor(p => p.TrainerId)
+		@Html.EditorFor(p => p.TrainerId, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+		@Html.ValidationMessageFor(p => p.TrainerId, "", new { @class = "text-danger" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(p => p.Full_Name)
+		@Html.EditorFor(p => p.Full_Name, new { htmlAttributes = new { @class = "form-control" } })
+		@Html.ValidationMessageFor(p => p.Full_Name, "", new { @class = "text-danger" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(p => p.Email)
+		@Html.EditorFor(p => p.Email, new { htmlAttributes = new { @class = "form-control" } })
+		@Html.ValidationMessageFor(p => p.Email, "", new { @class = "text-danger" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(p => p.Working_Place)
+		@Html.EditorFor(p => p.Working_Place, new { htmlAttributes = new { @class = "form-control" } })
+		@Html.ValidationMessageFor(p => p.Working_Place, "", new { @class = "text-danger" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(p => p.Phone)
+		@Html.EditorFor(p => p.Phone, new { htmlAttributes = new { @class = "form-control" } })
+		@Html.ValidationMessageFor(p => p.Phone, "", new { @class = "text-danger" })
+	</div>
+	<button type="submit" class="btn btn-primary">Edit</button>
+}

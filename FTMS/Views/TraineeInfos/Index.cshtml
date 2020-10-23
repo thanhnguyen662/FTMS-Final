@@ -1,0 +1,48 @@
+﻿@model IEnumerable<FTMS.Models.TraineeInfo>
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Traine Info</h2>
+
+@Html.ActionLink("Create a new Trainee Info", "Create")
+@using (Html.BeginForm("Index", "TraineeInfos", FormMethod.Get))
+{
+	<p>
+		Find by trainee username: @Html.TextBox("SearchString")
+		<input type="submit" value="Search" />
+	</p>
+}
+
+<table class="table table-hover">
+	<tr>
+		<th>Id</th>
+		<th>Username</th>
+		<th>Full Name</th>
+		<th>Education</th>
+		<th>Programming_Language</th>
+		<th>Experience_Details</th>
+		<th>Location</th>
+		<th>Toeic_Score</th>
+		<th>Department</th>
+		<th>Delete</th>
+		<th>Edit</th>
+
+	</tr>
+	@foreach (var traineeInfo in Model)
+	{
+		<tr>
+			<td>@traineeInfo.TraineeInfoId</td>
+			<td>@traineeInfo.Trainee.UserName</td>
+			<td>@traineeInfo.Full_Name</td>
+			<td>@traineeInfo.Education</td>
+			<td>@traineeInfo.Programming_Language</td>
+			<td>@traineeInfo.Experience_Details</td>
+			<td>@traineeInfo.Location</td>
+			<td>@traineeInfo.Toeic_Score</td>
+			<td>@traineeInfo.Department</td>
+			<td>@Html.ActionLink("Delete", "Delete", new { TraineeInfoId = traineeInfo.TraineeInfoId }, null)</td>
+			<td>@Html.ActionLink("Edit", "Edit", new { TraineeInfoId = traineeInfo.TraineeInfoId }, null)</td>
+		</tr>
+	}
+</table>

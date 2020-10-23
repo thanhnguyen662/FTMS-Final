@@ -1,0 +1,29 @@
+﻿@model IEnumerable<FTMS.Models.ManageTrainee>
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.ActionLink("Assign Trainee to Course", "Create")
+
+<table class="table table-hover">
+	<tr>
+		<th>Id</th>
+		<th>Trainee Id</th>
+		<th>Trainee Email</th>
+		<th>Course Name</th>
+		<th>Delete</th>
+
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<th>@item.Id</th>
+			<th>@item.TraineeId</th>
+			<th>@item.Trainee.Email</th>
+			<th>@item.Course.Name</th>
+			<td>@Html.ActionLink("Delete", "Delete", new { id = item.Id })</td>
+		</tr>
+	}
+</table>

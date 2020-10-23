@@ -1,0 +1,62 @@
+﻿@model FTMS.Models.TraineeInfo
+
+@{
+	ViewBag.Title = "Create";
+}
+
+<h2>Create a new Trainee Info</h2>
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+@using (Html.BeginForm("Create", "TraineeInfos", FormMethod.Post))
+{
+	@Html.AntiForgeryToken()
+	<div class="form-group">
+		@Html.LabelFor(m => m.TraineeId)
+		@Html.DropDownListFor(m => m.TraineeId
+			, new SelectList(Model.Trainees, "Id", "Username")
+			, "Select Trainer", new { @class = "form-control" }
+		)
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(p => p.Full_Name)
+		@Html.TextBoxFor(p => p.Full_Name, new { @class = "form-control" })
+		@Html.ValidationMessageFor(p => p.Full_Name, "", new { @class = "text-danger" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(p => p.Education)
+		@Html.TextBoxFor(p => p.Education, new { @class = "form-control" })
+		@Html.ValidationMessageFor(p => p.Education, "", new { @class = "text-danger" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(p => p.Programming_Language)
+		@Html.TextBoxFor(p => p.Programming_Language, new { @class = "form-control" })
+		@Html.ValidationMessageFor(p => p.Programming_Language, "", new { @class = "text-danger" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(p => p.Age)
+		@Html.TextBoxFor(p => p.Age, new { @class = "form-control" })
+		@Html.ValidationMessageFor(p => p.Age, "", new { @class = "text-danger" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(p => p.Experience_Details)
+		@Html.TextBoxFor(p => p.Experience_Details, new { @class = "form-control" })
+		@Html.ValidationMessageFor(p => p.Experience_Details, "", new { @class = "text-danger" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(p => p.Location)
+		@Html.TextBoxFor(p => p.Location, new { @class = "form-control" })
+		@Html.ValidationMessageFor(p => p.Location, "", new { @class = "text-danger" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(p => p.Toeic_Score)
+		@Html.TextBoxFor(p => p.Toeic_Score, new { @class = "form-control" })
+		@Html.ValidationMessageFor(p => p.Toeic_Score, "", new { @class = "text-danger" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(p => p.Department)
+		@Html.TextBoxFor(p => p.Department, new { @class = "form-control" })
+		@Html.ValidationMessageFor(p => p.Age, "", new { @class = "text-danger" })
+	</div>
+	<button type="submit" class="btn btn-primary">Create</button>
+}

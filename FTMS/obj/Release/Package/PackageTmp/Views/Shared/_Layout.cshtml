@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title - My ASP.NET Application</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+	<div style="width: 1440px height: auto" class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				@Html.ActionLink("The FTMS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li>@Html.ActionLink("Home", "Index", "Home")</li>
+					@if (Request.IsAuthenticated && User.IsInRole("Admin"))
+					{
+						<li>@Html.ActionLink("Accounts", "Index", "Admin")</li>
+						<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+					}
+
+					@if (Request.IsAuthenticated && User.IsInRole("Training Staff"))
+					{
+						<li>@Html.ActionLink("Accounts", "Index", "Staffs")</li>
+						<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+
+
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="False">Study<span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li>@Html.ActionLink("Category", "Index", "Categories")</li>
+								<li>@Html.ActionLink("Course", "Index", "Courses")</li>
+								<li>@Html.ActionLink("Topic", "Index", "Topics")</li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="False">Manage<span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li>@Html.ActionLink("Trainee", "Index", "ManageTrainees")</li>
+								<li>@Html.ActionLink("Trainer", "Index", "ManageTrainers")</li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="False">Infomation<span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li>@Html.ActionLink("Trainer Info", "Index", "TrainerInfos")</li>
+								<li>@Html.ActionLink("Trainee Info", "Index", "TraineeInfos")</li>
+							</ul>
+						</li>
+
+					}
+
+					@if (Request.IsAuthenticated && User.IsInRole("Trainee"))
+					{
+						<li>@Html.ActionLink("My Course", "Mine", "ManageTrainees")</li>
+						<li>@Html.ActionLink("My Info", "Mine", "TraineeInfos")</li>
+					}
+
+					@if (Request.IsAuthenticated && User.IsInRole("Trainer"))
+					{
+						<li>@Html.ActionLink("My Topic", "Mine", "ManageTrainers")</li>
+						<li>@Html.ActionLink("My Info", "Mine", "TrainerInfos")</li>
+					}
+				</ul>
+				@Html.Partial("_LoginPartial")
+			</div>
+		</div>
+	</div>
+	<div class="container body-content">
+		@RenderBody()
+		<hr />
+		<footer>
+			<p>&copy; @DateTime.Now.Year - The FTMS</p>
+		</footer>
+	</div>
+
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
+</body>
+</html>
