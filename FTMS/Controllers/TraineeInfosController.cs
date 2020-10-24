@@ -57,11 +57,12 @@ namespace FTMS.Controllers
 			{
 				return View();
 			}
-			if (_context.TraineeInfos.Any(c => c.Full_Name.Contains(traineeInfo.Full_Name)))
+
+			/*if (_context.TraineeInfos.Any(c => c.Full_Name.Contains(traineeInfo.Full_Name)))
 			{
 				ModelState.AddModelError("Name", "Trainer Name Already Exists.");
 				return View();
-			}
+			}*/
 			var newTraineeInfo = new TraineeInfo
 			{
 				TraineeId = traineeInfo.TraineeId,
