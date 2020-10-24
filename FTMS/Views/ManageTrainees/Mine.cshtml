@@ -6,6 +6,15 @@
 
 <h2>Mine</h2>
 
+@using (Html.BeginForm("Mine", "ManageTrainees", FormMethod.Get))
+{
+	<p>
+		Find by Course: @Html.TextBox("SearchString")
+		<input type="submit" value="Search" />
+	</p>
+}
+
+
 <table class="table table-hover">
 	<tr>
 		<th>Course Name</th>

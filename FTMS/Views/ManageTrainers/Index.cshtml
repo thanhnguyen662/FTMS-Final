@@ -6,6 +6,14 @@
 <h2>Index</h2>
 
 @Html.ActionLink("Assign Trainer to Topic", "Create")
+@using (Html.BeginForm("Index", "ManageTrainers", FormMethod.Get))
+{
+	<p>
+		Find by Email: @Html.TextBox("SearchString")
+		<input type="submit" value="Search" />
+	</p>
+}
+
 
 <table class="table table-hover">
 	<tr>

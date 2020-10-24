@@ -25,7 +25,7 @@ namespace FTMS.Controllers
 													.ToList();
 			if (!String.IsNullOrEmpty(searchString))
 			{
-				traineeInfos = traineeInfos.FindAll(s => s.Trainee.UserName.Contains(searchString));
+				traineeInfos = traineeInfos.FindAll(s => s.Trainee.Email.Contains(searchString));
 			}
 			return View(traineeInfos);
 		}
@@ -110,7 +110,7 @@ namespace FTMS.Controllers
 		}
 
 		[HttpGet]
-		[Authorize(Roles = "Training Staff, Trainee")]
+		[Authorize(Roles = "Training Staff")]
 		public ActionResult Edit(int traineeInfoId)
 		{
 			var traineeInfoInDb = _context.TraineeInfos.SingleOrDefault(p => p.TraineeInfoId == traineeInfoId);
@@ -124,7 +124,7 @@ namespace FTMS.Controllers
 		}
 
 		[HttpPost]
-		[Authorize(Roles = "Training Staff,Trainee")]
+		[Authorize(Roles = "Training Staff")]
 		public ActionResult Edit(TraineeInfo traineeInfo)
 		{
 			if (!ModelState.IsValid)

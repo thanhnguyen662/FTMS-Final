@@ -3,7 +3,6 @@
 	ViewBag.Title = "Mine";
 }
 
-
 <h2>Mine</h2>
 
 <table class="table table-hover">
@@ -16,7 +15,6 @@
 		<th>Location</th>
 		<th>Toeic Score</th>
 		<th>Department</th>
-		<th>Edit</th>
 	</tr>
 	@foreach (var item in Model)
 	{
@@ -29,7 +27,6 @@
 			<th>@item.Location</th>
 			<th>@item.Toeic_Score</th>
 			<th>@item.Department</th>
-			<td>@Html.ActionLink("Edit", "Edit", new { traineeInfoId = item.TraineeInfoId }, null)</td>
 		</tr>
 	}
 </table>

@@ -19,11 +19,18 @@ namespace FTMS.Controllers
 		}
 
 		[Authorize(Roles = "Training Staff")]
-		public ActionResult Index()
+		public ActionResult Index(string searchString)
 		{
 			var managetrainers = _context.ManageTrainers.Include(m => m.Topic)
 														.Include(m => m.Trainer)
 														.ToList();
+
+			if (!String.IsNullOrEmpty(searchString))
+			{
+				managetrainers = managetrainers.FindAll(s => s.Trainer.Email.Contains(searchString));
+
+			}
+
 			return View(managetrainers);
 		}
 
@@ -69,7 +76,7 @@ namespace FTMS.Controllers
 
 		[HttpGet]
 		[Authorize(Roles = "Trainer")]
-		public ActionResult Mine()
+		public ActionResult Mine(string searchString)
 		{
 			var userId = User.Identity.GetUserId();
 
@@ -78,6 +85,12 @@ namespace FTMS.Controllers
 				.Include(c => c.Topic)
 				.Include(c => c.Trainer)
 				.ToList();
+
+			if (!String.IsNullOrEmpty(searchString))
+			{
+				manageTrainers = manageTrainers.FindAll(s => s.Topic.Name.Contains(searchString));
+
+			}
 
 			return View(manageTrainers);
 		}
