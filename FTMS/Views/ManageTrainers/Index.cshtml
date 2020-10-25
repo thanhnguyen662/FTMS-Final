@@ -18,7 +18,6 @@
 <table class="table table-hover">
 	<tr>
 		<th>Id</th>
-		<th>Trainer Id</th>
 		<th>Trainer Email</th>
 		<th>Topic Name</th>
 		<th>Delete</th>
@@ -28,7 +27,6 @@
 	{
 		<tr>
 			<th>@item.Id</th>
-			<th>@item.TrainerId</th>
 			<th>@item.Trainer.Email</th>
 			<th>@item.Topic.Name</th>
 			<td>@Html.ActionLink("Delete", "Delete", new { id = item.Id })</td>
