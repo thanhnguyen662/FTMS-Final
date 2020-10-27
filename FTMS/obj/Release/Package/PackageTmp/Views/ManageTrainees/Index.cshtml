@@ -6,11 +6,16 @@
 <h2>Index</h2>
 
 @Html.ActionLink("Assign Trainee to Course", "Create")
-
+@using (Html.BeginForm("Index", "ManageTrainees", FormMethod.Get))
+{
+	<p>
+		Find by Email: @Html.TextBox("SearchString")
+		<input type="submit" value="Search" />
+	</p>
+}
 <table class="table table-hover">
 	<tr>
 		<th>Id</th>
-		<th>Trainee Id</th>
 		<th>Trainee Email</th>
 		<th>Course Name</th>
 		<th>Delete</th>
@@ -20,7 +25,6 @@
 	{
 		<tr>
 			<th>@item.Id</th>
-			<th>@item.TraineeId</th>
 			<th>@item.Trainee.Email</th>
 			<th>@item.Course.Name</th>
 			<td>@Html.ActionLink("Delete", "Delete", new { id = item.Id })</td>

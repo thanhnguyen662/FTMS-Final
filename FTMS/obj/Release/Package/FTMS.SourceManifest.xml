@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <sitemanifest>
-  <IisApp path="C:\Users\Thanh Nguyen\Source\Repos\FTMS-5\FTMS\obj\Release\Package\PackageTmp" />
-  <setAcl path="C:\Users\Thanh Nguyen\Source\Repos\FTMS-5\FTMS\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
-  <setAcl path="C:\Users\Thanh Nguyen\Source\Repos\FTMS-5\FTMS\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+  <IisApp path="C:\Users\Thanh Nguyen\source\repos\FTMS-Redo\FTMS\obj\Release\Package\PackageTmp" />
+  <setAcl path="C:\Users\Thanh Nguyen\source\repos\FTMS-Redo\FTMS\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\Thanh Nguyen\source\repos\FTMS-Redo\FTMS\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
 </sitemanifest>
