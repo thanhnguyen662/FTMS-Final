@@ -223,6 +223,14 @@
     <Compile Include="Migrations\202010221110091_TraineeInfoTable.Designer.cs">
       <DependentUpon>202010221110091_TraineeInfoTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010271344019_AddTraineeToDb1.cs" />
+    <Compile Include="Migrations\202010271344019_AddTraineeToDb1.designer.cs">
+      <DependentUpon>202010271344019_AddTraineeToDb1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010271400186_AddTrainerToDb1.cs" />
+    <Compile Include="Migrations\202010271400186_AddTrainerToDb1.designer.cs">
+      <DependentUpon>202010271400186_AddTrainerToDb1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -327,6 +335,8 @@
     <Content Include="Views\TraineeInfos\Create.cshtml" />
     <Content Include="Views\TraineeInfos\Edit.cshtml" />
     <Content Include="Views\TraineeInfos\Mine.cshtml" />
+    <Content Include="Views\ErrorValidations\Exist.cshtml" />
+    <Content Include="Views\ErrorValidations\Null.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -374,6 +384,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010221110091_TraineeInfoTable.resx">
       <DependentUpon>202010221110091_TraineeInfoTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010271344019_AddTraineeToDb1.resx">
+      <DependentUpon>202010271344019_AddTraineeToDb1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010271400186_AddTrainerToDb1.resx">
+      <DependentUpon>202010271400186_AddTrainerToDb1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

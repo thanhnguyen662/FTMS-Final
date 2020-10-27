@@ -45,14 +45,16 @@ namespace FTMS.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View();
+				return View("~/Views/ErrorValidations/Null.cshtml");
 			}
 
-			/*if (_context.Topics.Any(c => c.Name.Contains(topic.Name)))
+			var checkTopicAndCourse = _context.Topics.Any(c => c.Name == topic.Name &&
+																   c.CourseId == topic.CourseId);
+			if (checkTopicAndCourse == true)
 			{
-				ModelState.AddModelError("Name", "Topic Name Already Exists.");
-				return View();
-			}*/
+				return View("~/Views/ErrorValidations/Exist.cshtml");
+			}
+
 			var newTopic = new Topic
 			{
 				Name = topic.Name,
@@ -102,12 +104,21 @@ namespace FTMS.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View();
+				return View("~/Views/ErrorValidations/Null.cshtml");
 			}
+
 			var topicInDb = _context.Topics.SingleOrDefault(c => c.Id == topic.Id);
+
 			if (topicInDb == null)
 			{
 				return HttpNotFound();
+			}
+
+			var checkTopicAndCourse = _context.Topics.Any(c => c.Name == topic.Name &&
+																   c.CourseId == topic.CourseId);
+			if (checkTopicAndCourse == true)
+			{
+				return View("~/Views/ErrorValidations/Exist.cshtml");
 			}
 			topicInDb.Name = topic.Name;
 			topicInDb.Description = topic.Description;

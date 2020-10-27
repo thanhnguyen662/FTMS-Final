@@ -53,15 +53,16 @@ namespace FTMS.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View();
+				return View("~/Views/ErrorValidations/Null.cshtml");
 			}
 
-			/*if (_context.Courses.Any(c => c.Name.Contains(course.Name)))
+			var checkCourseAndCategory = _context.Courses.Any(c => c.Name == course.Name &&
+																   c.CategoryID == course.CategoryID);
+			if (checkCourseAndCategory == true)
 			{
-				ModelState.AddModelError("Name", "Course Name Already Exists.");
-				return View();
-			}*/
-				
+				return View("~/Views/ErrorValidations/Exist.cshtml");
+			}
+
 			var newCourses = new Course
 			{
 				Name = course.Name,
@@ -109,8 +110,16 @@ namespace FTMS.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View();
+				return View("~/Views/ErrorValidations/Null.cshtml");
 			}
+
+			var checkCourseAndCategory = _context.Courses.Any(c => c.Name == course.Name &&
+																   c.CategoryID == course.CategoryID);
+			if (checkCourseAndCategory == true)
+			{
+				return View("~/Views/ErrorValidations/Exist.cshtml");
+			}
+
 			var courseInDb = _context.Courses.SingleOrDefault(c => c.Id == course.Id);
 			if (courseInDb == null)
 			{

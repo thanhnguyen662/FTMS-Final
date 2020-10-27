@@ -61,6 +61,19 @@ namespace FTMS.Controllers
 		[Authorize(Roles = "Training Staff")]
 		public ActionResult Create(ManageTrainee manageTrainee)
 		{
+			if (!ModelState.IsValid)
+			{
+				return View("~/Views/ErrorValidations/Null.cshtml");
+			}
+
+			var checkTraineeInCourse = _context.ManageTrainees.Any(c => c.TraineeId == manageTrainee.TraineeId &&
+																   c.CourseId == manageTrainee.CourseId);
+			if (checkTraineeInCourse == true)
+			{
+				return View("~/Views/ErrorValidations/Exist.cshtml");
+			}
+
+
 			var newTrainee = new ManageTrainee
 			{
 				TraineeId = manageTrainee.TraineeId,
