@@ -71,7 +71,7 @@ namespace FTMS.Controllers
 			};
 			_context.Courses.Add(newCourses);
 			_context.SaveChanges();
-			return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+			return RedirectToAction("Index");
 		}
 
 		[HttpGet]

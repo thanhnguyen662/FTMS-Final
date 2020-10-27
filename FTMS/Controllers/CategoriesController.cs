@@ -41,13 +41,15 @@ namespace FTMS.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View();
+				return View("~/Views/ErrorValidations/Null.cshtml");
 			}
-			if (_context.Categories.Any(c => c.Name.Contains(category.Name)))
+
+			var checkCategory = _context.Categories.Any(c => c.Name == category.Name);
+			if (checkCategory == true)
 			{
-				ModelState.AddModelError("Name", "Category Name Already Exists.");
-				return View();
+				return View("~/Views/ErrorValidations/Exist.cshtml");
 			}
+
 			var newCategory = new Category
 			{
 				Name = category.Name,
@@ -89,13 +91,23 @@ namespace FTMS.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View();
+				return View("~/Views/ErrorValidations/Null.cshtml");
 			}
+
+			var checkCategory = _context.Categories.Any(c => c.Name == category.Name);
+			
+			if (checkCategory == true)
+			{
+				return View("~/Views/ErrorValidations/Exist.cshtml");
+			}
+
 			var categoryInDb = _context.Categories.SingleOrDefault(c => c.Id == category.Id);
+			
 			if (categoryInDb == null)
 			{
 				return HttpNotFound();
 			}
+
 			categoryInDb.Name = category.Name;
 			categoryInDb.Description = category.Description;
 			_context.SaveChanges();
