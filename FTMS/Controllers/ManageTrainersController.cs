@@ -68,8 +68,8 @@ namespace FTMS.Controllers
 				return View("~/Views/ErrorValidations/Null.cshtml");
 			}
 
-			var checkTrainerInTopic= _context.ManageTrainees.Any(c => c.TraineeId == manageTrainer.TrainerId &&
-																   c.CourseId == manageTrainer.TopicId);
+			var checkTrainerInTopic= _context.ManageTrainers.Any(c => c.TrainerId == manageTrainer.TrainerId &&
+																   c.TopicId == manageTrainer.TopicId);
 			if (checkTrainerInTopic == true)
 			{
 				return View("~/Views/ErrorValidations/Exist.cshtml");
