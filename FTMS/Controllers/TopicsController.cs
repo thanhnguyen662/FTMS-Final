@@ -98,6 +98,7 @@ namespace FTMS.Controllers
 
 			return View(viewModel);
 		}
+
 		[HttpPost]
 		[Authorize(Roles = "Training Staff")]
 		public ActionResult Edit(Topic topic)

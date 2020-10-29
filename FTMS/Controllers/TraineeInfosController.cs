@@ -55,14 +55,9 @@ namespace FTMS.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View();
+				return View("~/Views/ErrorValidations/Null.cshtml");
 			}
 
-			/*if (_context.TraineeInfos.Any(c => c.Full_Name.Contains(traineeInfo.Full_Name)))
-			{
-				ModelState.AddModelError("Name", "Trainer Name Already Exists.");
-				return View();
-			}*/
 			var newTraineeInfo = new TraineeInfo
 			{
 				TraineeId = traineeInfo.TraineeId,
@@ -129,7 +124,7 @@ namespace FTMS.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View();
+				return View("~/Views/ErrorValidations/Null.cshtml");
 			}
 			var traineeInfoInDb = _context.TraineeInfos.SingleOrDefault(c => c.TraineeInfoId == traineeInfo.TraineeInfoId);
 

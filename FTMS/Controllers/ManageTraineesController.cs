@@ -85,7 +85,6 @@ namespace FTMS.Controllers
 			return RedirectToAction("Index");
 		}
 
-
 		[HttpGet]
 		[Authorize(Roles = "Trainee")]
 		public ActionResult Mine(string searchString)
@@ -94,10 +93,10 @@ namespace FTMS.Controllers
 			var userId = User.Identity.GetUserId();
 
 			var manageTrainees = _context.ManageTrainees
-				.Where(c => c.TraineeId == userId)
-				.Include(c => c.Course)
-				.Include(c => c.Trainee)
-				.ToList();
+										 .Where(c => c.TraineeId == userId)
+										 .Include(c => c.Course)
+										 .Include(c => c.Trainee)
+										 .ToList();
 
 			if (!String.IsNullOrEmpty(searchString))
 			{
@@ -107,8 +106,6 @@ namespace FTMS.Controllers
 
 			return View(manageTrainees);
 		}
-
-
 
 		[HttpGet]
 		[Authorize(Roles = "Training Staff")]

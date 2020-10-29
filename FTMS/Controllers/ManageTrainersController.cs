@@ -69,7 +69,7 @@ namespace FTMS.Controllers
 			}
 
 			var checkTrainerInTopic= _context.ManageTrainers.Any(c => c.TrainerId == manageTrainer.TrainerId &&
-																   c.TopicId == manageTrainer.TopicId);
+																      c.TopicId == manageTrainer.TopicId);
 			if (checkTrainerInTopic == true)
 			{
 				return View("~/Views/ErrorValidations/Exist.cshtml");
@@ -92,11 +92,10 @@ namespace FTMS.Controllers
 		{
 			var userId = User.Identity.GetUserId();
 
-			var manageTrainers = _context.ManageTrainers
-				.Where(c => c.TrainerId == userId)
-				.Include(c => c.Topic)
-				.Include(c => c.Trainer)
-				.ToList();
+			var manageTrainers = _context.ManageTrainers.Where(c => c.TrainerId == userId)
+														.Include(c => c.Topic)
+														.Include(c => c.Trainer)
+														.ToList();
 
 			if (!String.IsNullOrEmpty(searchString))
 			{
