@@ -136,7 +136,6 @@ namespace FTMS.Controllers
 			}
 		}
 
-		//
 		// GET: /Account/Register
 	  [Authorize( Roles = "Admin, Training Staff")]  
 	  public ActionResult Register()    
@@ -158,8 +157,8 @@ namespace FTMS.Controllers
 
 		//
 		// POST: /Account/Register
-		[HttpPost]    
-		[AllowAnonymous]    
+		[HttpPost]
+		[Authorize(Roles = "Admin, Training Staff")]
 		[ValidateAntiForgeryToken]    
 		public async Task<ActionResult> Register(RegisterViewModel model)    
 		{    

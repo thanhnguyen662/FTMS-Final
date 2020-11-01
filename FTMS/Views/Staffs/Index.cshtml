@@ -12,7 +12,7 @@
 		<th>Role</th>
 		<th>Delete</th>
 		<th>Edit</th>
-		<th>Change Password</th>
+		<th>Reset Password</th>
 	</tr>
 	@foreach (var users in Model)
 	{
@@ -24,7 +24,7 @@
 				<td>@users.Role</td>
 				<td>@Html.ActionLink("Delete this user", "Delete", new { id = users.UserId })</td>
 				<td>@Html.ActionLink("Edit this user", "Edit", new { id = users.UserId })</td>
-				<td>@Html.ActionLink("Change Password", "Reset", new { id = users.UserId })</td>
+				<td>@Html.ActionLink("Reset Password", "Reset", new { id = users.UserId })</td>
 			}
 		</tr>
 	}
