@@ -337,6 +337,7 @@
     <Content Include="Views\TraineeInfos\Mine.cshtml" />
     <Content Include="Views\ErrorValidations\Exist.cshtml" />
     <Content Include="Views\ErrorValidations\Null.cshtml" />
+    <Content Include="Views\Staffs\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
